@@ -4,14 +4,32 @@ import './App.css';
 import axios from 'axios';
 
 
+
+
+
+
+
+
+
+
 class App extends Component {
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
     this.jump = this.jump.bind(this);
     this.state = {
-      username: ''
+      username: '',
+      posts: [],
     }
+  }
+
+  componentDidMount() {
+    axios.get(`http://www.reddit.com/r/reactjs.json`)
+      .then(res => {
+        const posts = res.data.data.children.map(obj => obj.data);
+        this.setState({ posts });
+        console.log(posts);
+      });
   }
 
   jump(e){
@@ -58,6 +76,20 @@ class App extends Component {
   Click Me
 </button>    
 <p>{this.state.username}</p>
+
+      <div>
+        <ul>
+          {this.state.posts.map(post =>
+            <li key={post.id}>{post.title}</li>
+          )}
+        </ul>
+      </div>
+
+
+
+
+
+
       </div>
     );
   }
