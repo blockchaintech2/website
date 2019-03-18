@@ -44,7 +44,7 @@ class App extends Component {
     
     // )
 
-    axios.get(`http://www.reddit.com/r/reactjs.json`)
+    axios.get(`https://www.reddit.com/r/reactjs.json`)
     .then(res => {
       // const posts = res.data.data.children.map(obj => obj.data);
       // this.setState({ posts });
