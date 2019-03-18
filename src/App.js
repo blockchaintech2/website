@@ -24,12 +24,12 @@ class App extends Component {
   }
 
   componentDidMount() {
-    axios.get(`http://www.reddit.com/r/reactjs.json`)
-      .then(res => {
-        const posts = res.data.data.children.map(obj => obj.data);
-        this.setState({ posts });
-        console.log(posts);
-      });
+    // axios.get(`http://www.reddit.com/r/reactjs.json`)
+    //   .then(res => {
+    //     const posts = res.data.data.children.map(obj => obj.data);
+    //     this.setState({ posts });
+    //     console.log(posts);
+    //   });
   }
 
   jump(e){
@@ -39,7 +39,14 @@ class App extends Component {
   }
 
   handleClick () {
-    axios.get('https://api.github.com/users/maecapozzi').then(response => this.setState({username: response.data.name}))
+    //axios.get('https://api.github.com/users/maecapozzi').then(response => this.setState({username: response.data.name}))
+
+    axios.get(`http://www.reddit.com/r/reactjs.json`)
+    .then(res => {
+      const posts = res.data.data.children.map(obj => obj.data);
+      this.setState({ posts });
+      console.log(posts);
+    });
   }
 
   render() {
